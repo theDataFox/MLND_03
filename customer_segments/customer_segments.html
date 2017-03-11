@@ -207,7 +207,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -227,9 +227,9 @@ div#notebook {
 <span class="k">try</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;customers.csv&quot;</span><span class="p">)</span>
     <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="nb">print</span><span class="s2">&quot;Wholesale customers dataset has </span><span class="si">{}</span><span class="s2"> samples with </span><span class="si">{}</span><span class="s2"> features each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Wholesale customers dataset has </span><span class="si">{}</span><span class="s2"> samples with </span><span class="si">{}</span><span class="s2"> features each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="s2">&quot;Dataset could not be loaded. Is the dataset missing?&quot;</span>
+    <span class="nb">print</span> <span class="s2">&quot;Dataset could not be loaded. Is the dataset missing?&quot;</span>
 </pre></div>
 
 </div>
@@ -480,7 +480,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -488,7 +488,7 @@ div#notebook {
 
 <span class="c1"># Create a DataFrame of the chosen samples</span>
 <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="s2">&quot;Chosen samples of wholesale customers dataset:&quot;</span>
+<span class="c1">#print&quot;Chosen samples of wholesale customers dataset:&quot;</span>
 <span class="n">display</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 </pre></div>
 
@@ -499,13 +499,6 @@ div#notebook {
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Chosen samples of wholesale customers dataset:
-</pre>
-</div>
-</div>
 
 <div class="output_area"><div class="prompt"></div>
 
@@ -581,8 +574,22 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <p>Index 45: Supermarket</p>
-<p>Index 87: Cafe or Market Food Hall</p>
-<p>Index 338: Restaurant chain</p>
+<ul>
+<li>Very large amount of purchasing on Grocery, Milk and detergents</li>
+<li>Frozen is perhaps a small section of their store</li>
+</ul>
+<p>Index 87: Market Food Hall</p>
+<ul>
+<li>Large purchasing on fresh goods and deli</li>
+<li>Higher than average on all other categories except detergents</li>
+<li>Little emphasis on detergents leads me to think of a food market type of distributor</li>
+</ul>
+<p>Index 338: Food Market or Fast food</p>
+<ul>
+<li>Large quantities above average on frozen</li>
+<li>Above average spend on groceries too</li>
+<li>This speaks of a restaurant fast food type restaurant or takeaway type of establishment, with little need for fresh products or amenities such as detergents for customers </li>
+</ul>
 
 </div>
 </div>
@@ -7160,11 +7167,10 @@ vQAAAAAAgxP0AgAAAAAMTtALAAAAADA4QS8AAAAAwOD+FwkNWDf2ToGCAAAAAElFTkSuQmCC
 <p><strong>Answer:</strong></p>
 <ul>
 <li>The first and second PC explains 70.1% of the total variance in the data</li>
-<li>Including the thirs and fourth explains 93.1%</li>
-<li>The first dimension appears to be a feature we could call utilities or a everyday grocery shopping</li>
-<li>The second dimension would represent food expenditure</li>
-<li>The third would be fresh produce and deli counter food that must be sold on the day or goods that have low shelf life</li>
-<li>The fourth dimension is food that has long shelf life and can be kept for a long time eg Frozen and ambient goods</li>
+<li>Including the thirs and fourth explains 93.1%
+<br>
+<br>
+It looks like the Dim1 is heavily reliant on Detergents, Grocery, and Milk, the features that are most correlated. Dim2 appears to be orthogonal to the first, reducing the impact of Milk, Grocery, and Detergents, and instead relying on variation in Fresh, Frozen, and Deli items. Lastly, Dim3 appears to be low Fresh spending and high Deli spending, and Dim4 is a similar for low Deli and high Frozen relative to each other.</li>
 </ul>
 
 </div>
@@ -9422,7 +9428,7 @@ OwRCAAAAANoOgRAAAACAtkMgBAAAAKDt/P/zt9Y+YVPJGwAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Segment 0: A much greater supply of frozen goods are purchased and also a higher than median amount of fresh, this could be a fresh food market place as fresh fish are usually kept frozen when selling at market or this could also be a restaurant/fast food place.. The amount of fresh produce is certainly leaning towards this scenario with hardly any detergents.</p>
+<p>Segment 0: A much greater supply of frozen goods are purchased and also a higher than median amount of fresh, this could be a fresh food market place as fresh fish are usually kept frozen when selling at market or this could also be a restaurant/fast food place. The amount of fresh produce is certainly leaning towards this scenario with hardly any detergents.</p>
 <p>Segment 1: A large amount again of fresh but this time a large amount of detergents too, much higher than the median value. There is a particular concentration on milk, groceries and detergents which is akin to large Supermarket chains or retailers.</p>
 
 </div>
@@ -9435,6 +9441,91 @@ OwRCAAAAANoOgRAAAACAtkMgBAAAAKDt/P/zt9Y+YVPJGwAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Question-9">Question 9<a class="anchor-link" href="#Question-9">&#182;</a></h3><p><em>For each sample point, which customer segment from</em> <strong><em>Question 8</em></strong> <em>best represents it? Are the predictions for each sample point consistent with this?</em></p>
 <p>Run the code block below to find which cluster each sample point is predicted to be.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fresh</th>
+      <th>Milk</th>
+      <th>Grocery</th>
+      <th>Frozen</th>
+      <th>Detergents_Paper</th>
+      <th>Delicatessen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5181</td>
+      <td>22044</td>
+      <td>21531</td>
+      <td>1740</td>
+      <td>7353</td>
+      <td>4985</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>43265</td>
+      <td>5025</td>
+      <td>8117</td>
+      <td>6312</td>
+      <td>1579</td>
+      <td>14351</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>333</td>
+      <td>7021</td>
+      <td>15601</td>
+      <td>15</td>
+      <td>550</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Answer:</strong></p>
+<p>From Question 8 I would suggest the following:</p>
+<p>Sample point 0: Segment 1 - Large Supermarket, Retailer</p>
+<p>Sample point 1: Segment 1 - This is a difficult one as the spread of spending is quite wide, but it looks more light a supermarket than fast food place.</p>
+<p>Sample point 2: Segment 0 - Food Market or Fast Food</p>
 
 </div>
 </div>
@@ -9475,19 +9566,8 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong></p>
-<p>Sample point 0: Cluster 1 - Large Supermarket</p>
-<ul>
-<li>Original guess: Supermarket -&gt; Correct prediction!</li>
-</ul>
-<p>Sample point 1: Cluster 1 - Large Supermarket</p>
-<ul>
-<li>Original guess: Cafe or Market Food Hall -&gt; Not correct </li>
-</ul>
-<p>Sample point 2: Cluster 0 - Local convenience store or small Restaurant/Fast Food</p>
-<ul>
-<li>Original guess: Restaurant chain -&gt; Original thinking of a small establishment restaurant, which matches in a way to what the algorithm predicted in terms of size.</li>
-</ul>
+<p><strong>Answer:</strong>
+From the predictions it would appear that my intuition was slightly off as the clustering has suggested only 2 segments while I thought there would be 3 from looking at Question 1.</p>
 
 </div>
 </div>
